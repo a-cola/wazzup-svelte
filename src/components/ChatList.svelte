@@ -63,7 +63,7 @@
     </div>
     <div class="chat-container">
         {#each db.getChatList() as chat}
-            <ChatSmall
+            <ChatSmall 
                 name={chat.name}
                 label={db.getMessages(chat.id).length!==0?db.getMessages(chat.id)[0].text:''}
                 time={db.getMessages(chat.id).length!==0?db.getMessages(chat.id)[0].time:''}

@@ -6,9 +6,12 @@
 
     let text = $state('');
 
-    const isOnline = () => {
-        return Math.random() < 0.1 ? "online" : `Last access ${Math.floor(Math.random()*59+1)} minutes ago`;
-      }
+    let isOnline = $state('');
+
+    $effect(()=>{
+        id;
+        isOnline = Math.random() < 0.1 ? "online" : `Last access ${Math.floor(Math.random()*59+1)} minutes ago`;
+    })
 
     const onkeyup = (e:KeyboardEvent) => {
         if(e.key === 'Enter' && text.trim()!=='') {
@@ -37,7 +40,7 @@
             </div>
             <div class="user-info">
                 <span class="name">{db.getChat(id)!.name}</span>
-                <span class="last-access">{isOnline()}</span>
+                <span class="last-access">{isOnline}</span>
             </div>
         </div>
         <button class="button-icon">

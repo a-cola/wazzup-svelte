@@ -32,7 +32,7 @@ export class MockDB {
         return hours + ':' + minutes
     }
 
-    private names = ["Giovanni","Giangiorgio", "Natascia", "Fabrizio", "Rianldo", "Michele", "Alice", "Iride"]
+    private names = ["Giovanni","Giangiorgio", "Natascia", "Fabrizio", "Rinaldo", "Michele", "Alice", "Iride"]
 
     chatList = $state<Chat[]>([
         { id:'1', group:false, name:"Hannah", text:"Che fai stasera?", time:"13:38", count:`2`,
@@ -80,6 +80,10 @@ export class MockDB {
         return this.names[Math.floor(Math.random()*this.names.length)]
     }
 
+    resetChatCount(id:string) {
+        this.getChat(id)!.count="0"
+    }
+
     addChat(group:boolean, name:string) {
         this.chatList = [...this.chatList, {
             id:window.crypto.randomUUID(),
@@ -87,7 +91,7 @@ export class MockDB {
             name:name,
             text:'',
             time:'',
-            count:'',
+            count:'0',
             messages:[]
         }]
     }
